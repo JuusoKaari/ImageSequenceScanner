@@ -17,41 +17,51 @@
 
 ---
 
-## 🧩 Planned Tech Stack
+## 🧩 Implementation
 
 ### Core
 - **Python 3.9+**
-- File system scanning with `os`, `glob`, `re`, and possibly `pathlib`
-- Basic data structure to store:
+- File system scanning with `os`, `glob`, `re`, and `pathlib`
+- Data structures to store:
   - Sequence base name
   - Frame numbers present
   - File sizes
   - Flags (missing, small, etc.)
 
 ### GUI
-- **PyQt or PySide** – for cross-platform native GUI
-  - Timeline-style visualizations using `QGraphicsView` or `QTableView`
+- **PySide6** – for cross-platform native GUI
+  - Timeline-style visualizations
   - Color-coded indicators (green = good, red = missing, yellow = small)
   - Scrollable layout for viewing multiple passes
-  - Optional tooltips on hover (file size, frame number, etc.)
+  - Tooltips on hover (file size, frame number, status)
+  - Frame click-to-open functionality
   - Folder picker dialog to select render directories
 
 ---
 
-## 🎯 MVP Milestones
+## 📂 Project Structure
 
-1. **File Scanner Module**
-   - Detect sequences using filename patterns
-   - Map available frames per sequence
-   - Flag missing or small-sized frames
-   - Output diagnostic info as structured data
+```
+ImageSequenceScanner/
+├── image_sequence_scanner/     # Main package
+│   ├── __init__.py             # Package initialization
+│   ├── __main__.py             # Entry point for module execution
+│   ├── scanner.py              # Core file scanning functionality
+│   ├── gui.py                  # Main window and application logic
+│   └── timeline_widget.py      # Timeline visualization widget
+├── tests/                      # Test directory
+│   ├── __init__.py
+│   └── test_scanner.py         # Tests for scanner module
+├── run_scanner.py              # Convenience script to run the app
+├── setup.py                    # Package installation
+├── requirements.txt            # Dependencies
+├── INSTALL.md                  # Installation and usage guide
+├── README.md                   # This file
+└── .gitignore                  # Git ignore file
+```
 
-3. **GUI Prototype**
-   - Select folder
-   - Show sequences as timelines (rows)
-   - Mark frame statuses with colors or symbols
+---
 
-4. **Interactivity & Polish**
-   - Hover to inspect frame metadata
-   - Click to open file in OS
-   - Zoom/pan if needed
+## 🚀 Getting Started
+
+See [INSTALL.md](INSTALL.md) for detailed installation and usage instructions.
